@@ -1,31 +1,31 @@
 /* eslint-disable react/require-default-props */
-import React from 'react'
-import Helmet from 'react-helmet'
-import PropTypes from 'prop-types'
-import { graphql, StaticQuery } from 'gatsby'
-import config from '../../config/site'
+import React from 'react';
+import Helmet from 'react-helmet';
+import PropTypes from 'prop-types';
+import { graphql, StaticQuery } from 'gatsby';
+import config from '../../config/site';
 
-const Head = props => {
-  const { postNode, postPath, postSEO, data } = props
-  let title
-  let description
-  let image
+const Head = (props) => {
+  const { postNode, postPath, postSEO, data } = props;
+  let title;
+  let description;
+  let image;
 
-  const bt = data.site.buildTime
-  const realPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
-  const homeURL = `${config.siteUrl}${realPrefix}`
-  const URL = `${homeURL}${postPath || ''}`
+  const bt = data.site.buildTime;
+  const realPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
+  const homeURL = `${config.siteUrl}${realPrefix}`;
+  const URL = `${homeURL}${postPath || ''}`;
 
   if (postSEO) {
-    const postMeta = postNode.frontmatter
-    const postImage = postMeta.cover.childImageSharp.resize.src
-    title = `${postMeta.title} | ${config.siteTitle}`
-    description = postNode.excerpt || config.siteDescription
-    image = `${homeURL}${postImage}`
+    const postMeta = postNode.frontmatter;
+    const postImage = postMeta.cover.childImageSharp.resize.src;
+    title = `${postMeta.title} | ${config.siteTitle}`;
+    description = postNode.excerpt || config.siteDescription;
+    image = `${homeURL}${postImage}`;
   } else {
-    title = config.siteTitleAlt
-    description = config.siteDescription
-    image = `${homeURL}${config.siteLogo}`
+    title = config.siteTitleAlt;
+    description = config.siteDescription;
+    image = `${homeURL}${config.siteLogo}`;
   }
 
   // schema.org in JSONLD format
@@ -64,7 +64,7 @@ const Head = props => {
       '@type': 'ImageObject',
       url: image,
     },
-  }
+  };
 
   // Initial breadcrumb list
 
@@ -77,9 +77,9 @@ const Head = props => {
       },
       position: 1,
     },
-  ]
+  ];
 
-  let schemaArticle = null
+  let schemaArticle = null;
 
   if (postSEO) {
     schemaArticle = {
@@ -118,7 +118,7 @@ const Head = props => {
         url: image,
       },
       mainEntityOfPage: URL,
-    }
+    };
     // Push current blogpost into breadcrumb list
     itemListElement.push({
       '@type': 'ListItem',
@@ -127,7 +127,7 @@ const Head = props => {
         name: title,
       },
       position: 2,
-    })
+    });
   }
 
   const breadcrumb = {
@@ -136,7 +136,7 @@ const Head = props => {
     description: 'Breadcrumbs list',
     name: 'Breadcrumbs',
     itemListElement,
-  }
+  };
 
   return (
     <Helmet>
@@ -166,19 +166,21 @@ const Head = props => {
       {postSEO && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
       <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
     </Helmet>
-  )
-}
+  );
+};
 
-const SEO = props => <StaticQuery query={querySEO} render={data => <Head {...props} data={data} />} />
+const SEO = (props) => (
+  <StaticQuery query={querySEO} render={(data) => <Head {...props} data={data} />} />
+);
 
-export default SEO
+export default SEO;
 
 Head.propTypes = {
   postNode: PropTypes.object,
   data: PropTypes.any.isRequired,
   postPath: PropTypes.string,
   postSEO: PropTypes.bool,
-}
+};
 
 const querySEO = graphql`
   query SEO {
@@ -186,4 +188,4 @@ const querySEO = graphql`
       buildTime(formatString: "YYYY-MM-DD")
     }
   }
-`
+`;

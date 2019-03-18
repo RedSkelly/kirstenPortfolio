@@ -4,6 +4,9 @@ logs
 *.log
 npm-debug.log*
 
+# Semantic-UI
+semantic/
+
 # Runtime data
 pids
 *.pid

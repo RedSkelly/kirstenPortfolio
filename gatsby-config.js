@@ -1,6 +1,6 @@
-const config = require('./config/site')
+const config = require('./config/site');
 
-const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
+const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
 
 module.exports = {
   pathPrefix: config.pathPrefix,
@@ -41,7 +41,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-lodash',
-    'gatsby-plugin-sitemap',
+    // 'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -52,10 +52,10 @@ module.exports = {
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
         display: 'standalone',
-        icon: 'src/favicon.png',
+        icon: 'src/utils/logo.jpg',
       },
     },
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify',
   ],
-}
+};
