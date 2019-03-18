@@ -1,32 +1,35 @@
-import React from 'react'
-import Img from 'gatsby-image'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
-import styled from 'styled-components'
+import React from 'react';
+import Img from 'gatsby-image';
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
+import styled from 'styled-components';
 
-import { Layout, ProjectHeader, ProjectPagination, SEO } from '../components'
-import config from '../../config/site'
+import { Layout, ProjectHeader, ProjectPagination, SEO } from '../components';
+import config from '../../config/site';
 
 const BG = styled.div`
-  background-color: ${props => props.theme.colors.bg};
+  background-color: ${(props) => props.theme.colors.bg};
   position: relative;
   padding: 2rem 0 0 0;
-`
+`;
 
 const OuterWrapper = styled.div`
-  padding: 0 ${props => props.theme.contentPadding};
+  padding: 0 ${(props) => props.theme.contentPadding};
   margin: -10rem auto 0 auto;
-`
+`;
 
 const InnerWrapper = styled.div`
   position: relative;
-  max-width: ${props => `${props.theme.maxWidths.project}px`};
+  max-width: ${(props) => `${props.theme.maxWidths.project}px`};
   margin: 0 auto;
-`
+`;
 
-const Project = ({ pageContext: { slug, prev, next }, data: { project: postNode, images: imgs } }) => {
-  const images = imgs.edges
-  const project = postNode.frontmatter
+const Project = ({
+  pageContext: { slug, prev, next },
+  data: { project: postNode, images: imgs },
+}) => {
+  const images = imgs.edges;
+  const project = postNode.frontmatter;
 
   return (
     <Layout customSEO>
@@ -42,11 +45,11 @@ const Project = ({ pageContext: { slug, prev, next }, data: { project: postNode,
       <BG>
         <OuterWrapper>
           <InnerWrapper>
-            {images.map(image => (
+            {images.map((image) => (
               <Img
                 key={image.node.childImageSharp.fluid.src}
                 fluid={image.node.childImageSharp.fluid}
-                style={{ margin: '3rem 0' }}
+                style={{ margin: '2rem 0', maxHeight: '800px' }}
               />
             ))}
           </InnerWrapper>
@@ -54,10 +57,10 @@ const Project = ({ pageContext: { slug, prev, next }, data: { project: postNode,
         </OuterWrapper>
       </BG>
     </Layout>
-  )
-}
+  );
+};
 
-export default Project
+export default Project;
 
 Project.propTypes = {
   pageContext: PropTypes.shape({
@@ -69,14 +72,14 @@ Project.propTypes = {
     project: PropTypes.object.isRequired,
     images: PropTypes.object.isRequired,
   }).isRequired,
-}
+};
 
 Project.defaultProps = {
   pageContext: PropTypes.shape({
     next: null,
     prev: null,
   }),
-}
+};
 
 export const pageQuery = graphql`
   query($slug: String!, $absolutePathRegex: String!) {
@@ -122,4 +125,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
