@@ -1,11 +1,11 @@
 /* eslint no-unused-expressions: off */
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 
-import { SEO, Footer } from './index'
-import theme from '../../config/theme'
-import reset from '../styles/reset'
+import { SEO, Footer } from './index';
+import theme from '../../config/theme';
+import reset from '../styles/reset';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body {
-    background: url("${props => props.theme.bgPattern}") #000;
+    background: ${(props) => props.theme.colors.bg};
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
   .gatsby-resp-image-wrapper {
     margin: 2.75rem 0;
   }
-`
+`;
 
 const AbsoluteWrapper = styled.main`
   position: absolute;
@@ -35,7 +35,7 @@ const AbsoluteWrapper = styled.main`
   bottom: 0;
   width: 100%;
   height: 100%;
-`
+`;
 
 const Layout = ({ children, customSEO }) => (
   <ThemeProvider theme={theme}>
@@ -49,15 +49,15 @@ const Layout = ({ children, customSEO }) => (
       </AbsoluteWrapper>
     </>
   </ThemeProvider>
-)
+);
 
-export default Layout
+export default Layout;
 
 Layout.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired,
   customSEO: PropTypes.bool,
-}
+};
 
 Layout.defaultProps = {
   customSEO: false,
-}
+};

@@ -1,26 +1,27 @@
-import React from 'react'
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
-import { useSpring, animated, config } from 'react-spring'
-import MDXRenderer from 'gatsby-mdx/mdx-renderer'
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
+import { useSpring, animated, config } from 'react-spring';
+import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 
-import arrow from '../images/left-chevron.svg'
+import arrow from '../images/left-chevron.svg';
 
 const Wrapper = styled.div`
   display: flex;
   position: relative;
-`
+`;
 
 const Content = styled.div`
   margin: 0 auto;
   width: 100%;
-  max-width: ${props => props.theme.maxWidths.general};
+  max-width: ${(props) => props.theme.maxWidths.general};
   padding: 2rem 1.0875rem 13rem 1.0875rem;
-  color: ${props => props.theme.colors.secondary};
-`
+  color: ${(props) => props.theme.colors.white};
+  height: 450px;
+`;
 
-const Back = styled(Link)`
+const ArrowBack = styled(Link)`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -31,7 +32,16 @@ const Back = styled(Link)`
     height: 1.5rem;
     margin: 0 1rem 0 0;
   }
-`
+`;
+
+const Home = styled(animated.h4)`
+  margin: 0;
+  padding: 0;
+  color: ${(props) => props.theme.colors.link};
+  &:hover {
+    color: ${(props) => props.theme.colors.linkHover};
+  }
+`;
 
 const Avatar = styled.div`
   height: 3rem;
@@ -46,28 +56,24 @@ const Avatar = styled.div`
     height: auto;
     width: 100%;
   }
-`
+`;
 
-const Name = styled(animated.h4)`
-  margin: 0 0 0 1rem;
-  color: ${props => props.theme.colors.color};
-`
-
-const Details = styled.div`
+const Title = styled.div`
   width: 100%;
-  margin-top: 6rem;
+  margin-top: 4rem;
   text-align: center;
 
   h1 {
-    color: ${props => props.theme.colors.color};
+    color: ${(props) => props.theme.colors.name};
+    letter-spacing: 0.1em;
   }
-`
+`;
 
 const Text = styled.div`
   max-width: 750px;
   margin: 4rem auto 2rem auto;
   color: white;
-`
+`;
 
 const ProjectHeader = ({ avatar, name, title, date, areas, text }) => {
   const titleProps = useSpring({
@@ -75,20 +81,25 @@ const ProjectHeader = ({ avatar, name, title, date, areas, text }) => {
     delay: 200,
     from: { opacity: 0, transform: 'translate3d(0, 30px, 0)' },
     to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
-  })
-  const contentProps = useSpring({ config: config.slow, delay: 600, from: { opacity: 0 }, to: { opacity: 1 } })
+  });
+  const contentProps = useSpring({
+    config: config.slow,
+    delay: 600,
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+  });
 
   return (
     <Wrapper>
       <Content>
-        <Back to="/">
+        <ArrowBack to="/">
           <img src={arrow} data-info="back" alt="Back to home" aria-label="Back to home" />
-          <Avatar>
+          {/* <Avatar>
             <img src={avatar} alt={name} />
-          </Avatar>
-          <Name>{name}</Name>
-        </Back>
-        <Details>
+          </Avatar> */}
+          <Home>Home</Home>
+        </ArrowBack>
+        <Title>
           <animated.h1 style={titleProps}>{title}</animated.h1>
           <animated.div style={contentProps}>
             <p>{date}</p>
@@ -106,13 +117,13 @@ const ProjectHeader = ({ avatar, name, title, date, areas, text }) => {
               </Text>
             )}
           </animated.div>
-        </Details>
+        </Title>
       </Content>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default ProjectHeader
+export default ProjectHeader;
 
 ProjectHeader.propTypes = {
   avatar: PropTypes.string.isRequired,
@@ -121,4 +132,4 @@ ProjectHeader.propTypes = {
   date: PropTypes.string.isRequired,
   areas: PropTypes.array.isRequired,
   text: PropTypes.string.isRequired,
-}
+};

@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   padding: 3rem 0;
   justify-content: flex-end;
   a {
-    color: ${(props) => props.theme.colors.color};
+    color: ${(props) => props.theme.colors.link};
     display: flex;
     align-items: center;
     font-size: 1.25rem;

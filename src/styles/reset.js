@@ -35,41 +35,41 @@ const reset = css`
     h5 {
       font-size: 1rem;
     }
-    @media (max-width: ${theme.breakpoints.l}), (max-device-width: ${theme.breakpoints.l}) {
-      font-size: 18px !important;
-      h1 {
-        font-size: 2.074rem;
-      }
-      h2 {
-        font-size: 1.728rem;
-      }
-      h3 {
-        font-size: 1.44rem;
-      }
-      h4 {
-        font-size: 1.2rem;
-      }
-    }
-    @media (max-width: ${theme.breakpoints.m}), (max-device-width: ${theme.breakpoints.m}) {
-      font-size: 16px !important;
-    }
-    @media (max-width: ${theme.breakpoints.s}), (max-device-width: ${theme.breakpoints.s}) {
-      h1 {
-        font-size: 1.602rem;
-      }
-      h2 {
-        font-size: 1.424rem;
-      }
-      h3 {
-        font-size: 1.266rem;
-      }
-      h4 {
-        font-size: 1.125rem;
-      }
-    }
+    // @media (max-width: ${theme.breakpoints.l}), (max-device-width: ${theme.breakpoints.l}) {
+    //   font-size: 18px !important;
+    //   h1 {
+    //     font-size: 2.074rem;
+    //   }
+    //   h2 {
+    //     font-size: 1.728rem;
+    //   }
+    //   h3 {
+    //     font-size: 1.44rem;
+    //   }
+    //   h4 {
+    //     font-size: 1.2rem;
+    //   }
+    // }
+    // @media (max-width: ${theme.breakpoints.m}), (max-device-width: ${theme.breakpoints.m}) {
+    //   font-size: 16px !important;
+    // }
+    // @media (max-width: ${theme.breakpoints.s}), (max-device-width: ${theme.breakpoints.s}) {
+    //   h1 {
+    //     font-size: 1.602rem;
+    //   }
+    //   h2 {
+    //     font-size: 1.424rem;
+    //   }
+    //   h3 {
+    //     font-size: 1.266rem;
+    //   }
+    //   h4 {
+    //     font-size: 1.125rem;
+    //   }
+    // }
   }
   body {
-    color: ${theme.colors.color};
+    color: ${theme.colors.white};
   }
   ::selection {
     color: ${theme.colors.white};
@@ -141,7 +141,7 @@ const reset = css`
   caption {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    color: ${theme.colors.color};
+    color: ${theme.colors.white};
     text-align: center;
     caption-side: bottom;
   }

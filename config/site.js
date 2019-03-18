@@ -8,7 +8,7 @@ module.exports = {
   // siteUrl: 'https://emilia.lekoarts.de', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
   siteLogo: '/logos/logo.jpg', // Used for SEO and manifest
-  siteDescription: 'Dark One-Page portfolio with cards & detailed project views',
+  siteDescription: 'art portfolio with cards & detailed project views',
   author: 'Shaun', // Author for schema.org JSONLD
 
   // siteFBAppID: '123456789', // Facebook App ID - Optional
@@ -28,11 +28,11 @@ module.exports = {
   socialMedia: [
     {
       url: '',
-      name: 'Twitter',
+      name: 'Instagram',
     },
     {
       url: '',
-      name: 'Instagram',
+      name: 'Résumé',
     },
     // {
     //   url: 'https://www.lekoarts.de/en',

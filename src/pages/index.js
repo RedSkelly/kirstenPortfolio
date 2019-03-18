@@ -9,7 +9,7 @@ import config from '../../config/site';
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(${(props) => props.theme.gridColumns}, 1fr);
-  grid-gap: 15px;
+  grid-gap: 35px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
