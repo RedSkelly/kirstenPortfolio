@@ -49,7 +49,7 @@ const Project = ({
               <Img
                 key={image.node.childImageSharp.fluid.src}
                 fluid={image.node.childImageSharp.fluid}
-                style={{ margin: '2rem 8rem', maxHeight: '600px' }}
+                style={{ margin: '2rem 0', maxHeight: '600px' }}
               />
             ))}
           </InnerWrapper>

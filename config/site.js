@@ -27,7 +27,7 @@ module.exports = {
   location: 'Chattanooga, TN',
   socialMedia: [
     {
-      url: '',
+      url: 'https://instagram.com/wavy_kirt',
       name: 'Instagram',
     },
     {
