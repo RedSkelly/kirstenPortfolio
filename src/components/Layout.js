@@ -3,9 +3,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 
-import { SEO, Footer } from './index';
+import { SEO, Footer, Header } from './index';
+
 import theme from '../../config/theme';
 import reset from '../styles/reset';
+import config from '../../config/site';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -37,13 +39,23 @@ const AbsoluteWrapper = styled.main`
   height: 100%;
 `;
 
-const Layout = ({ children, customSEO }) => (
+const Layout = ({ children, customSEO, noHeader, noHome }) => (
   <ThemeProvider theme={theme}>
     <>
       {!customSEO && <SEO />}
       <GlobalStyle />
       <noscript>To browse this site, please enable JavaScript.</noscript>
       <AbsoluteWrapper>
+        {noHeader ? null : (
+          <Header
+            avatar={config.avatar}
+            name={config.name}
+            location={config.location}
+            socialMedia={config.socialMedia}
+            noHome={noHome}
+          />
+        )}
+
         {children}
         <Footer />
       </AbsoluteWrapper>
@@ -56,8 +68,12 @@ export default Layout;
 Layout.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired,
   customSEO: PropTypes.bool,
+  noHome: PropTypes.bool,
+  noHeader: PropTypes.bool,
 };
 
 Layout.defaultProps = {
   customSEO: false,
+  noHome: false,
+  noHeader: false,
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import GatsbyLink from 'gatsby-link';
 
 const Wrapper = styled.div`
   background: ${(props) => props.theme.colors.bg};
@@ -57,7 +58,7 @@ const SocialMedia = styled.div`
   }
 `;
 
-const Header = ({ avatar, name, location, socialMedia }) => (
+const Header = ({ avatar, name, location, socialMedia, noHome }) => (
   <Wrapper>
     <Content>
       {/* <Avatar>
@@ -66,11 +67,14 @@ const Header = ({ avatar, name, location, socialMedia }) => (
       <Name>{name}</Name>
       {/* <Location>{location}</Location> */}
       <SocialMedia>
+        {noHome ? null : <GatsbyLink to="/">Home</GatsbyLink>}
+
         {socialMedia.map((social) => (
           <a key={social.name} href={social.url} rel="noopener noreferrer" target="_blank">
             {social.name}
           </a>
         ))}
+        <GatsbyLink to="/about">About</GatsbyLink>
       </SocialMedia>
     </Content>
   </Wrapper>
@@ -83,4 +87,9 @@ Header.propTypes = {
   name: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   socialMedia: PropTypes.array.isRequired,
+  noHome: PropTypes.bool,
+};
+
+Header.defaultProps = {
+  noHome: false,
 };

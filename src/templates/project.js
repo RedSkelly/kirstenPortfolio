@@ -19,9 +19,15 @@ const OuterWrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-  position: relative;
-  max-width: ${(props) => `${props.theme.maxWidths.project}px`};
-  margin: 0 auto;
+  // position: relative;
+  // max-width: ${(props) => `${props.theme.maxWidths.project}px`};
+  // margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+
+  img {
+    object-fit: contain !important;
+  }
 `;
 
 const Project = ({
@@ -32,7 +38,7 @@ const Project = ({
   const project = postNode.frontmatter;
 
   return (
-    <Layout customSEO>
+    <Layout customSEO noHeader>
       <SEO postPath={slug} postNode={postNode} postSEO />
       <ProjectHeader
         avatar={config.avatar}
@@ -49,7 +55,11 @@ const Project = ({
               <Img
                 key={image.node.childImageSharp.fluid.src}
                 fluid={image.node.childImageSharp.fluid}
-                style={{ margin: '2rem 0', maxHeight: '600px' }}
+                style={{
+                  margin: '2rem 0',
+                  flexBasis: '100%',
+                  maxHeight: '800px',
+                }}
               />
             ))}
           </InnerWrapper>
@@ -119,7 +129,7 @@ export const pageQuery = graphql`
             }
           }
         }
-        date(formatString: "DD.MM.YYYY")
+        date(formatString: "MM.DD.YYYY")
         title
         areas
       }

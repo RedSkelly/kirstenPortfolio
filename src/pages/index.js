@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import { Card, Header, Layout } from '../components';
-import config from '../../config/site';
+import { Card, Layout } from '../components';
 
 const Grid = styled.div`
   display: grid;
@@ -37,13 +36,7 @@ const Index = ({
     allMdx: { edges },
   },
 }) => (
-  <Layout>
-    <Header
-      avatar={config.avatar}
-      name={config.name}
-      location={config.location}
-      socialMedia={config.socialMedia}
-    />
+  <Layout noHome>
     <BG>
       <Content>
         <Grid>

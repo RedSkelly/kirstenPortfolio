@@ -34,6 +34,7 @@ module.exports = {
       url: '',
       name: 'Résumé',
     },
+
     // {
     //   url: 'https://www.lekoarts.de/en',
     //   name: 'Homepage',
